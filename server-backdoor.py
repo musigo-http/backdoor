@@ -32,7 +32,7 @@ if(dmd == "n"):
     command = "pyinstaller --noconsole --onefile --icon="
     user = input(f"{Fore.BLUE}path of file icon (.jpeg, .png, .jpg) {Fore.RED}(please no integrate space in path){Fore.BLUE}>>")
     print(f"{Fore.BLUE}[+]creating app...\n\n")
-    os.system(f"{command}{user} {name}.py")
+    os.system(f"{command}'{user}' {name}.py")
     os.system("rm -r build")
     os.system(f"rm -r {name}.spec")
     os.system(f"rm -r {name}.py")
