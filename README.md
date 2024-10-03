@@ -4,4 +4,4 @@
 4. type the command "ls".
 5. type the command "sudo bash start.sh"
 6. type your password
-7. your virus is ready please share this app for infected the victim good luck (;.
+7. your virus is ready please share this app for infect the victim good luck (;.
